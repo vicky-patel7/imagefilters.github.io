@@ -283,6 +283,21 @@
             imgcanvas = document.getElementById("can");
             image.drawTo(imgcanvas);
         }
+        function downloadImage(){  
+            // get canvas data  
+            var canvas = document.getElementById('can');
+            var image = canvas.toDataURL();  
+          
+            // create temporary link  
+            var tmpLink = document.createElement( 'a' );  
+            tmpLink.download = 'image.png'; // set the name of the download file 
+            tmpLink.href = image;  
+          
+            // temporarily add link to body and initiate the download  
+            document.body.appendChild( tmpLink );  
+            tmpLink.click();  
+            document.body.removeChild( tmpLink );  
+        }
     </script>
 
     <title>Mini Projects</title>
@@ -310,6 +325,7 @@
         Reset the filter to its original image
     </h3>
     <input class="button" type="button" value="Clear" onclick="Claearfilter()">
+    <input class="button" type="button" value="Download" onclick="downloadImage()">
     </p>
 </body>
 
